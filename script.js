@@ -1,33 +1,12 @@
-// ============================================
-// EDIT THIS CONFIG with your real payment info
-// ============================================
-const PAYMENT_CONFIG = {
-  venmoUsername: "YOUR-VENMO-USERNAME",   // e.g. "jane-doe-22" (no @)
-  paypalMeUsername: "YOUR-PAYPAL-USERNAME" // your PayPal.Me handle
-};
-
-function buildVenmoLink(amount, note) {
-  const encodedNote = encodeURIComponent(note);
-  return `https://venmo.com/${PAYMENT_CONFIG.venmoUsername}?txn=pay&amount=${amount}&note=${encodedNote}`;
-}
-
-function buildPaypalLink(amount) {
-  return `https://paypal.me/${PAYMENT_CONFIG.paypalMeUsername}/${amount}`;
-}
-
-function wirePaymentButtons() {
-  document.querySelectorAll('[data-venmo]').forEach((btn) => {
-    const amount = btn.getAttribute('data-amount');
-    const note = btn.getAttribute('data-note') || 'Order';
-    btn.href = buildVenmoLink(amount, note);
-    btn.target = "_blank";
-    btn.rel = "noopener";
-  });
-  document.querySelectorAll('[data-paypal]').forEach((btn) => {
-    const amount = btn.getAttribute('data-amount');
-    btn.href = buildPaypalLink(amount);
-    btn.target = "_blank";
-    btn.rel = "noopener";
+function wireAddToCartButtons() {
+  document.querySelectorAll('.btn-add-cart').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const card = btn.closest('.product-card');
+      const name = card ? card.querySelector('h3').textContent : 'Item';
+      // TODO: hook this up to your real cart logic
+      alert(`${name} added to cart!`);
+    });
   });
 }
 
@@ -58,7 +37,7 @@ function wireCategoryTabs() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  wirePaymentButtons();
+  wireAddToCartButtons();
   wireNavToggle();
   wireCategoryTabs();
 });
