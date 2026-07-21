@@ -1,0 +1,2 @@
+/*
+  Basic-Auth: admin:${BASIC_AUTH_PASSWORD}
