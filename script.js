@@ -1,11 +1,12 @@
-function wireAddToCartButtons() {
-  document.querySelectorAll('.btn-add-cart').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const card = btn.closest('.product-card');
-      const name = card ? card.querySelector('h3').textContent : 'Item';
-      // TODO: hook this up to your real cart logic
-      alert(`${name} added to cart!`);
+function wireImageToggles() {
+  document.querySelectorAll('.image-toggle').forEach((toggle) => {
+    const img = toggle.parentElement.querySelector('img');
+    toggle.querySelectorAll('.img-toggle-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        toggle.querySelectorAll('.img-toggle-btn').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        img.src = btn.dataset.image;
+      });
     });
   });
 }
@@ -37,7 +38,7 @@ function wireCategoryTabs() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  wireAddToCartButtons();
+  wireImageToggles();
   wireNavToggle();
   wireCategoryTabs();
 });

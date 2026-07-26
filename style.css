@@ -216,6 +216,9 @@ img { max-width: 100%; display: block; }
 .btn-add-cart {
   flex: 1;
   width: 100%;
+  cursor: default;
+  opacity: 0.7;
+  pointer-events: none;
 }
 
 /* ---------- Features strip ---------- */
@@ -335,11 +338,46 @@ img { max-width: 100%; display: block; }
   text-transform: uppercase;
   border-bottom: 1px solid var(--card-line);
   overflow: hidden;
+  position: relative;
 }
 .product-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* ---------- Product image toggle (On Model / Straps) ---------- */
+.image-toggle {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  background: rgba(58, 33, 38, 0.6);
+  backdrop-filter: blur(3px);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 2px;
+}
+.img-toggle-btn {
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.img-toggle-btn:hover { color: var(--brass); }
+.img-toggle-btn.active {
+  background: var(--brass);
+  color: var(--bg-deep);
+  font-weight: 700;
 }
 .product-body { padding: 22px 24px 26px; flex: 1; display: flex; flex-direction: column; }
 .product-body .catalog-no { margin-bottom: 8px; }
@@ -350,23 +388,11 @@ img { max-width: 100%; display: block; }
 /* ---------- About page ---------- */
 .story {
   padding: 80px 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
   border-bottom: 1px solid var(--card-line);
 }
-.story-image {
-  aspect-ratio: 4/5;
-  background: linear-gradient(160deg, var(--bg-deep), var(--card));
-  border: 1px solid var(--card-line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--ivory-dim);
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+.story .wrap > div {
+  max-width: 640px;
+  margin: 0 auto;
 }
 .story h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); margin-bottom: 20px; }
 .story p { color: var(--ivory-dim); margin-bottom: 16px; }
@@ -379,10 +405,6 @@ img { max-width: 100%; display: block; }
   padding-left: 24px;
   margin: 30px 0;
 }
-@media (max-width: 720px) {
-  .story { grid-template-columns: 1fr; }
-}
-
 .values {
   padding: 80px 0;
   display: grid;
@@ -433,14 +455,4 @@ footer {
 }
 @media (max-width: 720px) {
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-}
-
-.placeholder-note {
-  background: var(--bg-deep);
-  border: 1px dashed var(--brass);
-  color: var(--brass-bright);
-  font-size: 0.78rem;
-  padding: 10px 16px;
-  border-radius: var(--radius);
-  margin-bottom: 24px;
 }
