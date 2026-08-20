@@ -1,5 +1,5 @@
 {
-	"dbConnectionString": "postgres://localhost:55890/postgres",
+	"dbConnectionString": "postgres://localhost:51841/postgres",
 	"geolocation": {
 		"data": {
 			"city": "Kirkland",
@@ -16,6 +16,6 @@
 			"longitude": -122.1961,
 			"postalCode": "98034"
 		},
-		"timestamp": 1785019705409
+		"timestamp": 1787174802173
 	}
 }

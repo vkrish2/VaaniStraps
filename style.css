@@ -319,6 +319,19 @@ img { max-width: 100%; display: block; }
   object-fit: cover;
 }
 
+.sizing-image {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sizing-image img {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--card-line);
+}
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -397,6 +410,78 @@ img { max-width: 100%; display: block; }
 .product-body h3 { font-size: 1.15rem; margin-bottom: 6px; }
 .product-price { color: var(--brass-bright); font-weight: 700; font-family: 'Manrope', sans-serif; margin-bottom: 10px; }
 .product-desc { color: var(--ivory-dim); font-size: 0.9rem; flex: 1; margin-bottom: 18px; }
+
+/* ---------- Product options (size / count) ---------- */
+.product-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+.option-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.option-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ivory-dim);
+}
+.size-select {
+  font-family: 'Consolas', 'SFMono-Regular', 'Menlo', monospace;
+  font-size: 0.85rem;
+  color: var(--ivory);
+  background: var(--card);
+  border: 1px solid var(--card-line);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  cursor: pointer;
+}
+.size-select:hover, .size-select:focus { border-color: var(--brass); outline: none; }
+
+.sizing-guide-link {
+  font-size: 0.78rem;
+  color: var(--brass-bright);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  width: fit-content;
+}
+.sizing-guide-link:hover { color: var(--brass); }
+
+.qty-stepper {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid var(--card-line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  width: fit-content;
+}
+.qty-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card);
+  border: none;
+  color: var(--ivory);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.qty-btn:hover:not(:disabled) { background: var(--brass); color: var(--bg-deep); }
+.qty-btn:disabled { color: var(--card-line); cursor: not-allowed; }
+.qty-value {
+  min-width: 32px;
+  text-align: center;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
 
 /* ---------- About page ---------- */
 .story {
